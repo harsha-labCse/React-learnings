@@ -1,10 +1,15 @@
 import React from 'react'
 
-export default function header() {
+/*
+We use props in React to pass data from one component to another (from a parent component to a child component(s)). 
+Props is just a shorter way of saying properties. They are useful when you want the flow of data in your app to be dynamic.
+*/
+
+export default function Header(props) {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
     <div className="container-fluid">
-      <a className="navbar-brand" href="#">TODO List | HavarCodezz</a>
+      <a className="navbar-brand" href="#">{props.title}</a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -15,15 +20,24 @@ export default function header() {
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">About Us</a>
-          </li>
-          
+          </li>  
         </ul>
-        <form className="d-flex" role="search">
+
+      {/* Let's hide searchBar using props */}
+      {props.searchBar? <form className="d-flex" role="search">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> : ""}
+
+        
       </div>
     </div>
   </nav>
   )
+}
+
+Header.defaultProps = {
+
+  title : "Your title here",
+  searchBar : true
 }
