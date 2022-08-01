@@ -4,8 +4,13 @@ import Header from './MyComponents/Header'; //we don't have to use {} as export 
 import {Todos} from './MyComponents/Todos'; //we have to use {} as export is not default for this
 import {Footer} from './MyComponents/Footer';
 import React, { useState } from 'react';
+import {AddTodo} from "./MyComponents/AddTodo";
 
 function App() {
+
+  const addTodo = (title, desc)=>{
+    console.log("Add item button", title, desc);
+  }
 
   const onDelete = (todoItem) =>{
       console.log("I am onDelete button", todoItem);
@@ -44,6 +49,7 @@ function App() {
 
    <>
       <Header title = "MyTodosList" searchBar = {false}/>
+      <AddTodo addTodo = {addTodo}/>
       <Todos todos = {todos}  onDelete={onDelete}/>
       <Footer/>
    </>
